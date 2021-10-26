@@ -22,12 +22,15 @@ class Auto:
         self.registro=registro
 
     def cantidadAsientos(self):
-        cantidadAsientos = 0
-        for i in range(0, len(self.asientos)):
-            if isinstance(self.asientos[i], Asiento):
-                cantidadAsientos += 1
-        
-        return cantidadAsientos
+
+        contador=0
+        for i in self.asientos:
+            if (i!=None):
+
+                contador+=1
+
+        return contador
+    
     def verificarIntegridad(self):
         if (self.registro!=self.motor.registro):
             return "Las piezas no son originales"
@@ -35,14 +38,15 @@ class Auto:
             for i in self.asientos:
                 if (i!=None and i.registro!=self.registro):
                     return "Las piezas no son originales"
-            return "Auto original"
+            return "Auto original"           
+
 
         
 class Motor:
-    def __init__(self,numeroCilindros,tipo, registro):
+    def __init__(self,numeroCilindros,tipo,registro):
         self.numeroCilindors = numeroCilindros
         self.tipo = tipo
-        self.regsitro = registro
+        self.registro = registro
 
     def cambiarRegistro(self,NuevoRegistro):
         self.registro = NuevoRegistro
